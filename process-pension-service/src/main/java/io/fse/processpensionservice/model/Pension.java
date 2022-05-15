@@ -1,57 +1,28 @@
-package io.fse.pensionerdetailsservice.model;
+package io.fse.processpensionservice.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "Pension")
-public class Pensioner {
-
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(nullable = false, updatable = false)
-//	private Long id;
+public class Pension {
 	
-	@Column(name = "Name")
 	private String name;
-	
-	@Id
-	@Column(name = "Aadhaar_Number")
 	private long aadhaarNumber;
-	
-	@Column(name = "Date_of_Birth")
 	private String dateOfBirth;
-	
-	@Column(name = "Pan")
 	private String pan;
-	
-	@Column(name = "Salary_Earned")
 	private Double salaryEarned;
-	
-	@Column(name = "Allowances")
 	private Double allowances;
-	
-	@Column(name = "Pension_Type")
 	private String pensionType;
-	
-	@Column(name = "Name_of_Bank")
 	private String bankName;
-	
-	@Column(name = "Bank_Account_Number")
 	private String bankAccountNumber;
-	
-	@Column(name = "Bank_Type")
 	private String bankType;
+	private Double pensionAmount;
+	private Double serviceCharges;
 	
-	public Pensioner() {
+	public Pension() {
 		super();
 	}
 
-	public Pensioner(String name, long aadhaarNumber, String dateOfBirth, String pan, Double salaryEarned,
-			Double allowances, String pensionType, String bankName, String bankAccountNumber, String bankType) {
+	public Pension(String name, long aadhaarNumber, String dateOfBirth, String pan, Double salaryEarned,
+			Double allowances, String pensionType, String bankName, String bankAccountNumber, String bankType,
+			Double pensionAmount, Double serviceCharges) {
+		super();
 		this.name = name;
 		this.aadhaarNumber = aadhaarNumber;
 		this.dateOfBirth = dateOfBirth;
@@ -62,8 +33,9 @@ public class Pensioner {
 		this.bankName = bankName;
 		this.bankAccountNumber = bankAccountNumber;
 		this.bankType = bankType;
+		this.pensionAmount = pensionAmount;
+		this.serviceCharges = serviceCharges;
 	}
-
 
 	public String getName() {
 		return name;
@@ -144,12 +116,21 @@ public class Pensioner {
 	public void setBankType(String bankType) {
 		this.bankType = bankType;
 	}
-	
-	@Override
-	public String toString() {
-		return "Pensioner [name=" + name + ", aadhaarNumber=" + aadhaarNumber + ", dateOfBirth=" + dateOfBirth
-				+ ", pan=" + pan + ", salaryEarned=" + salaryEarned + ", allowances=" + allowances + ", pensionType="
-				+ pensionType + ", bankName=" + bankName + ", bankAccountNumber=" + bankAccountNumber + ", bankType="
-				+ bankType + "]";
+
+	public Double getPensionAmount() {
+		return pensionAmount;
 	}
+
+	public void setPensionAmount(Double pensionAmount) {
+		this.pensionAmount = pensionAmount;
+	}
+
+	public Double getServiceCharges() {
+		return serviceCharges;
+	}
+
+	public void setServiceCharges(Double serviceCharges) {
+		this.serviceCharges = serviceCharges;
+	}
+	
 }
