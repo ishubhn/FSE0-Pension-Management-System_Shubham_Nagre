@@ -16,11 +16,16 @@ public class ProcessPensionController {
 	@Autowired
 	ProcessPensionService service;
 	
+	
+//	Pensioner user;
+	
 	// Get User details from service layer
 	// JWT is remaining
 	@GetMapping("/PensionerDetailByAadhaar/{aadhaarNumber}")
-	public ResponseEntity<Pensioner> FindPensionerByAadhaar(@PathVariable long aadhaarNumber) {
-		return new ResponseEntity<Pensioner>(service.FindUserByAadhaarNumber(aadhaarNumber), HttpStatus.OK);
+	public ResponseEntity<Pensioner> findPensionerByAadhaar(@PathVariable long aadhaarNumber) {
+		Pensioner user = service.findUserByAadhaarNumber(aadhaarNumber);
+		
+		return new ResponseEntity<Pensioner>(user, HttpStatus.OK);
 	}
 	
 }
