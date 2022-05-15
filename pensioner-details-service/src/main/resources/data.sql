@@ -1,0 +1,2 @@
+INSERT INTO PENSION (Name, Aadhaar_Number, Date_of_Birth, Pan, Salary_Earned, Allowances, Pension_Type, Name_of_Bank, Bank_Account_Number, Bank_Type) VALUES ('Bruce Banner', 616236368123, '01-01-1958', 'JHTO1234E', 725130, 0, 'Self', 'ICICI Bank', '12333648912', 'Private');
+INSERT INTO PENSION (Name, Aadhaar_Number, Date_of_Birth, Pan, Salary_Earned, Allowances, Pension_Type, Name_of_Bank, Bank_Account_Number, Bank_Type) VALUES ('Steve Rogers', 123487659900, '01-01-1912', 'ABCD1234J', 1233300, 720, 'Self', 'State Bank of India', '432244142344', 'Public');
