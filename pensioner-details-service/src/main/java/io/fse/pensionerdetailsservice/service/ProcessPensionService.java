@@ -15,7 +15,7 @@ public class ProcessPensionService {
 	public Pensioner findUserByAadhaarNumber (long aadhaarNumber) {
 		// Get user details from repository
 		Pensioner user = repo.findByAadhaarNumber(aadhaarNumber);
-		System.out.println(user);
+//		System.out.println(user);
 		if (user == null) {
 			throw new UserNotFoundException("No user pension details found for Aadhar: " + aadhaarNumber);
 		}
