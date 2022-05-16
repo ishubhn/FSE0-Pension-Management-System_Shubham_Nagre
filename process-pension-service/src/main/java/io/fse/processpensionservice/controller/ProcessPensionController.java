@@ -21,6 +21,7 @@ public class ProcessPensionController {
 	@Autowired
 	private JwtUtil JwtUtil;
 	
+	/*
 //	@PostMapping("/ProcessPension/{aadhaarNumber}")
 //	public ResponseEntity<Pension> getPensionDetails(@PathVariable long aadhaarNumber) {
 //		ResponseEntity<Pension> response = proxy.findPensionerByAadhaar(aadhaarNumber);
@@ -44,6 +45,7 @@ public class ProcessPensionController {
 //		
 //		return new ResponseEntity<Pension>(pension, HttpStatus.CREATED);
 //	}
+ */
 	
 	@PostMapping("/ProcessPension/{aadhaarNumber}")
 	public ResponseEntity<Pension> getPensionDetails(@RequestHeader("Authorization") String token, @PathVariable long aadhaarNumber) {
