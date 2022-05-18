@@ -12,6 +12,15 @@ export class User {
 	}
 }
 
+//Not sure
+export class UserDetails {
+	aadhaarNumber: any | undefined;
+
+	constructor(aadhaarNumber: any) {
+		this.aadhaarNumber = aadhaarNumber;
+	}
+}
+
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -27,6 +36,7 @@ export class AppComponent {
 	pensionDetails: any;
 	processPension: any;
 	aadhaarNumber: any;
+	pensionAmount: any;
 
 	onClickSubmit(result: { username: string, password: string }) {
 		console.log('username: ' + result.username);
@@ -44,10 +54,22 @@ export class AppComponent {
 			);
 	}
 
-	onClickSubmitAadhar(result: { aadharNumber: string }) {
+	onClickSubmitAadhar(result: { aadhaarNumber: string }) {
 		console.log("Aadhaar Id entered - " + this.aadhaarNumber);
 
-		this.aadhaarNumber = result.aadharNumber;
+		this.aadhaarNumber = result.aadhaarNumber;
+
+		this.postcomments(new UserDetails(result.aadhaarNumber))
+			.subscribe 
+			(
+				data => {
+					console.log(`aadhaar inside post - ${this.aadhaarNumber}`);
+					this.pensionAmount = data.pensionAmount;
+				}
+			)
+		
+
+		
 	}
 
 
@@ -63,10 +85,11 @@ export class AppComponent {
 	}
 
 	// Post Request sent
-	postcomments(): Observable<any> {
+	postcomments(userDetails: UserDetails): Observable<any> {
+		console.log("The token inside post method call - " + this.jwtToken);
 		const headers = new HttpHeaders().set(
-			
+			'Authorization', 'Bearer ' + this.jwtToken
 		)
-		return this.httpClient.post("");
+		return this.httpClient.post(`http://localhost:8100/ProcessPension/${userDetails.aadhaarNumber}`, {headers});
 	}
 }
